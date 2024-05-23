@@ -519,7 +519,7 @@ class OnPolicyRunner:
         print("*" * 80)
         return loaded_dict['infos']
 
-    def get_inference_policy(self, device=None):
+    def get_inference_policy(self, device=None):  # 获取推理策略
         self.alg.actor_critic.eval() # switch to evaluation mode (dropout for example)
         if device is not None:
             self.alg.actor_critic.to(device)
@@ -537,13 +537,13 @@ class OnPolicyRunner:
             self.alg.actor_critic.to(device)
         return self.alg.actor_critic
     
-    def get_estimator_inference_policy(self, device=None):
+    def get_estimator_inference_policy(self, device=None):  # 获取估计器推理策略
         self.alg.estimator.eval() # switch to evaluation mode (dropout for example)
         if device is not None:
             self.alg.estimator.to(device)
         return self.alg.estimator.inference
 
-    def get_depth_encoder_inference_policy(self, device=None):
+    def get_depth_encoder_inference_policy(self, device=None):  # 获取深度编码器推理策略
         self.alg.depth_encoder.eval()
         if device is not None:
             self.alg.depth_encoder.to(device)
