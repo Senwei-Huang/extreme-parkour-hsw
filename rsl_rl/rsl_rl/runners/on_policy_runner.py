@@ -118,7 +118,7 @@ class OnPolicyRunner:
         self.current_learning_iteration = 0
         
 
-    def learn_RL(self, num_learning_iterations, init_at_random_ep_len=False):
+    def learn_RL(self, num_learning_iterations, init_at_random_ep_len=False):  # 使用高程图训练
         mean_value_loss = 0.
         mean_surrogate_loss = 0.
         mean_estimator_loss = 0.
@@ -218,7 +218,7 @@ class OnPolicyRunner:
         # self.current_learning_iteration += num_learning_iterations
         self.save(os.path.join(self.log_dir, 'model_{}.pt'.format(self.current_learning_iteration)))
 
-    def learn_vision(self, num_learning_iterations, init_at_random_ep_len=False):
+    def learn_vision(self, num_learning_iterations, init_at_random_ep_len=False):  # 使用深度图训练
         tot_iter = self.current_learning_iteration + num_learning_iterations
         self.start_learning_iteration = copy(self.current_learning_iteration)
 
