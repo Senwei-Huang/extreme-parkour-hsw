@@ -78,8 +78,8 @@ class OnPolicyRunner:
         self.if_depth = self.depth_encoder_cfg["if_depth"]
         if self.if_depth:
             depth_backbone = DepthOnlyFCBackbone58x87(env.cfg.env.n_proprio, 
-                                                    self.policy_cfg["scan_encoder_dims"][-1], 
-                                                    self.depth_encoder_cfg["hidden_dims"],
+                                                    self.policy_cfg["scan_encoder_dims"][-1],  # 32
+                                                    self.depth_encoder_cfg["hidden_dims"],  # 512
                                                     )
             depth_encoder = RecurrentDepthBackbone(depth_backbone, env.cfg).to(self.device)
             depth_actor = deepcopy(actor_critic.actor)

@@ -125,10 +125,10 @@ def play(args):
         print("Loading jit for policy: ", path)
         policy_jit = torch.jit.load(path, map_location=env.device)
     else:
-        policy = ppo_runner.get_inference_policy(device=env.device)
-    estimator = ppo_runner.get_estimator_inference_policy(device=env.device)
+        policy = ppo_runner.get_inference_policy(device=env.device)  # self.alg.actor_critic.act_inference
+    estimator = ppo_runner.get_estimator_inference_policy(device=env.device)  # self.alg.estimator.inference
     if env.cfg.depth.use_camera:
-        depth_encoder = ppo_runner.get_depth_encoder_inference_policy(device=env.device)
+        depth_encoder = ppo_runner.get_depth_encoder_inference_policy(device=env.device)  # self.alg.depth_encoder
 
     actions = torch.zeros(env.num_envs, 12, device=env.device, requires_grad=False)
     infos = {}
